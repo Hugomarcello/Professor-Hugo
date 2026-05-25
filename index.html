@@ -102,6 +102,20 @@ header.scrolled { box-shadow: 0 4px 24px rgba(15,45,61,0.08); }
 .nav-links a { font-size: 0.85rem; font-weight: 600; color: var(--gray-text); transition: color 0.2s; }
 .nav-links a:hover { color: var(--teal); }
 
+/* Mobile hero badges — só aparecem no mobile */
+.hero-mobile-badges { display: none; }
+@media (max-width: 768px) {
+  .hero-mobile-badges {
+    display: flex; flex-direction: column; gap: 8px; margin-top: 16px;
+  }
+  .hmb-item {
+    display: flex; align-items: flex-start; gap: 8px;
+    font-size: 0.82rem; color: var(--gray-text); line-height: 1.4;
+  }
+  .hmb-icon { color: var(--teal); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+  body { padding-bottom: 64px; }
+}
+
 /* WHATSAPP MOBILE BAR */
 .wpp-mobile-bar {
   display: none;
@@ -391,6 +405,152 @@ footer { background: var(--navy); color: rgba(255,255,255,0.55); padding: 60px 0
 
 /* RESPONSIVO */
 
+/* ── TABLET (até 1024px) ── */
+@media (max-width: 1024px) {
+  .problema-grid  { grid-template-columns: repeat(2, 1fr); }
+  .trilha-nodes   { grid-template-columns: repeat(2, 1fr); }
+  .trilha-line    { display: none; }
+  .trilha-node    { flex-direction: column !important; }
+  .tc-top, .tc-bottom { padding: 12px 0 0; }
+  .st-branches    { grid-template-columns: repeat(2, 1fr); }
+  .st-branches::before { display: none; }
+  .galeria-grid   { grid-template-columns: repeat(2, 1fr); }
+  .planos-cta-box { padding: 48px 28px; }
+  .garantia-box   { padding: 48px 28px; }
+  .footer-grid    { grid-template-columns: 1fr 1fr; gap: 36px; }
+  .footer-brand   { grid-column: span 2; }
+  .footer-brand p { max-width: 100%; }
+  .dcard          { width: calc((100% - 16px) / 2); }
+}
+
+/* ── MOBILE (até 768px) ── */
+@media (max-width: 768px) {
+  section { padding: 60px 0; }
+  .wrap   { padding: 0 18px; }
+
+  /* NAVBAR — oculta links de texto, mantém só botão */
+  .nav-links a:not(.btn) { display: none; }
+  .wpp-float    { display: none; }
+  .wpp-mobile-bar { display: flex; }
+
+  /* HERO — empilha tudo em coluna */
+  .hero { min-height: auto; padding-top: 80px; padding-bottom: 48px; }
+  .hero-inner { grid-template-columns: 1fr; gap: 28px; }
+  .hero-right { justify-content: center; }
+  .hero-img-frame { max-width: 100%; aspect-ratio: 4/3; }
+  /* Esconde cards flutuantes que sobrepõem no mobile */
+  .hero-float-card  { display: none; }
+  .hero-float-card2 { display: none; }
+  /* Stats em grade 2x2 limpa */
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    padding-top: 24px;
+    border-top: 1px solid var(--gray-border);
+  }
+  .hstat-num { font-size: 1.6rem; }
+  /* Botões empilhados */
+  .hero-btns { flex-direction: column; gap: 10px; }
+  .hero-btns .btn { width: 100%; justify-content: center; }
+
+  /* PROBLEMA — 1 coluna */
+  .problema-grid { grid-template-columns: 1fr; gap: 14px; }
+  .prob-card     { padding: 24px 20px; display: flex; flex-direction: column; gap: 8px; }
+  .prob-icon     { font-size: 1.6rem; margin-bottom: 0; }
+
+  /* COMO FUNCIONA — 1 coluna, ícone ao lado */
+  .como-grid { grid-template-columns: 1fr; gap: 20px; }
+  .como-grid::before { display: none; }
+  .como-step {
+    flex-direction: row;
+    text-align: left;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 0;
+  }
+  .como-num {
+    width: 52px; height: 52px;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    margin-bottom: 0;
+    box-shadow: 0 0 0 5px var(--teal-light);
+  }
+  .como-arrow { display: none; }
+  .como-step h3 { margin-bottom: 4px; }
+
+  /* SOBRE — empilha */
+  .sobre-grid { grid-template-columns: 1fr; gap: 32px; }
+  .sobre-stat {
+    position: static;
+    transform: none;
+    margin-top: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    white-space: normal;
+  }
+  .ss-num { font-size: 1.2rem; }
+
+  /* TRILHA — 1 coluna empilhada */
+  .trilha-nodes { grid-template-columns: 1fr; gap: 16px; }
+  .trilha-line  { display: none; }
+  .trilha-node  { flex-direction: column !important; }
+  .trilha-node:nth-child(even) { flex-direction: column !important; }
+  .tc-top, .tc-bottom { padding: 8px 0 0; }
+  .trilha-card-inner { text-align: left; display: flex; flex-direction: row; align-items: flex-start; gap: 12px; flex-wrap: wrap; padding: 16px; }
+  .tc-icon  { font-size: 1.2rem; margin-bottom: 0; flex-shrink: 0; }
+  .tc-title { font-size: 0.88rem; }
+  .tc-desc  { font-size: 0.78rem; flex: 1 1 100%; }
+  .tc-tag   { margin-top: 0; }
+  .trilha-dot { width: 44px; height: 44px; font-size: 0.9rem; box-shadow: 0 0 0 4px white; }
+
+  /* ÁRVORE DE HABILIDADES — 2 colunas */
+  .st-branches { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .st-branches::before { display: none; }
+  .st-branch { padding: 16px 12px; }
+  .st-root-dot { width: 52px; height: 52px; }
+
+  /* REGIÕES — 1 coluna */
+  .regioes-grid { grid-template-columns: 1fr; gap: 12px; }
+  .regiao-card  { padding: 24px 20px; }
+
+  /* GALERIA — 2 colunas */
+  .galeria-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+
+  /* DEPOIMENTOS — 1 card, sem botões */
+  .dcard     { width: 85vw; aspect-ratio: auto; min-height: 200px; }
+  .dcar-btn  { display: none; }
+  .dcar-wrap { gap: 0; }
+
+  /* PLANOS */
+  .plano-destaques { flex-direction: column; align-items: center; }
+  .pd-card         { width: 100%; max-width: 260px; }
+  .planos-cta-box  { padding: 36px 20px; border-radius: var(--radius-lg); }
+  .garantia-box    { padding: 36px 20px; border-radius: var(--radius-lg); }
+
+  /* FAQ */
+  summary    { padding: 16px 18px; font-size: 0.88rem; }
+  .faq-answer { padding: 0 18px 16px; }
+
+  /* CONTATO */
+  .contato-simples { grid-template-columns: 1fr; gap: 32px; }
+
+  /* FOOTER */
+  .footer-grid  { grid-template-columns: 1fr; gap: 24px; }
+  .footer-brand { grid-column: span 1; }
+  .footer-bottom { flex-direction: column; text-align: center; gap: 8px; }
+
+  /* MISC */
+  .social-card-row { padding: 14px 16px; }
+  .marquee-item    { font-size: 0.78rem; }
+  .logo-mark { width: 30px; height: 30px; font-size: 0.8rem; border-radius: 8px; }
+  .nav-logo  { font-size: 0.85rem; }
+  h1 { font-size: clamp(1.8rem, 7vw, 2.4rem); }
+  h2 { font-size: clamp(1.5rem, 5vw, 2rem); }
+  .sec-header { margin-bottom: 32px; }
+}
+
 </style>
 </head>
 <body>
@@ -438,6 +598,17 @@ Professor Hugo Marcelo
           <a href="https://wa.me/5531991083949?text=Olá, Prof. Hugo! Gostaria de agendar a aula experimental gratuita." target="_blank" class="btn btn-yellow btn-lg">Agendar Aula Gratuita</a>
           <a href="#como-funciona" class="btn btn-outline btn-lg">Como funciona</a>
         </div>
+        <!-- badge visível só no mobile, substitui os cards flutuantes -->
+        <div class="hero-mobile-badges">
+          <div class="hmb-item">
+            <span class="hmb-icon">✓</span>
+            <span>1ª aula gratuita e sem compromisso</span>
+          </div>
+          <div class="hmb-item">
+            <span class="hmb-icon">🎓</span>
+            <span>CREF 047465-G/MG · Ed. Física Licenciatura e Bacharelado</span>
+          </div>
+        </div>
         <div class="hero-stats">
           <div><div class="hstat-num">+8</div><div class="hstat-lbl">anos de<br>experiência</div></div>
           <div><div class="hstat-num">+100</div><div class="hstat-lbl">alunos<br>atendidos</div></div>
@@ -447,6 +618,7 @@ Professor Hugo Marcelo
       </div>
 
       <div class="hero-right">
+        <!-- card flutuante superior — oculto no mobile via CSS -->
         <div class="hero-float-card2">
           <div class="hfc2-icon">
             <svg viewBox="0 0 24 24" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
@@ -457,8 +629,9 @@ Professor Hugo Marcelo
           </div>
         </div>
         <div class="hero-img-frame">
-          <img src="IMG-01.jpg" alt="Prof. Hugo Marcelo em aula" onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\'><div class=\'ph-circle\'><svg viewBox=\'0 0 24 24\'><path d=\'M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v2h20v-2c0-3.3-6.7-5-10-5z\'/></svg></div><span>Adicione sua foto</span><code>IMG-01.jpeg</code></div>'">
+          <img src="IMG-01.jpeg" alt="Prof. Hugo Marcelo em aula" onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\'><div class=\'ph-circle\'><svg viewBox=\'0 0 24 24\'><path d=\'M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v2h20v-2c0-3.3-6.7-5-10-5z\'/></svg></div><span>Adicione sua foto</span><code>IMG-01.jpeg</code></div>'">
         </div>
+        <!-- card flutuante inferior — oculto no mobile via CSS -->
         <div class="hero-float-card">
           <div class="hfc-label">Formação</div>
           <div class="hfc-val">Ed. Física</div>
@@ -1324,7 +1497,7 @@ Professor Hugo Marcelo
       <div>
         <span class="label">Fale comigo</span>
         <h2>Pronto para o <span>primeiro passo?</span></h2>
-        <p style="margin-bottom:0;">Me chama no WhatsApp e siga no Instagram. Respondo pelo WhatsApp sempre em até 24 horas e fico feliz em tirar qualquer dúvida antes de marcarmos a aula experimental.</p>
+        <p style="margin-bottom:0;">Me chama no WhatsApp, siga no Instagram ou pelo e-mail. Respondo pelo Whatsapp sempre em até 24 horas e fico feliz em tirar qualquer dúvida antes de marcarmos a aula experimental.</p>
         <div class="info-list">
           <div class="info-item">
             <div class="ii-icon yellow-icon">
@@ -1379,7 +1552,7 @@ Professor Hugo Marcelo
       <div class="footer-brand">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
           <div class="logo-mark">H</div>
-          <h3>Professor Hugo Marcelo</h3>
+          <h3>Prof. Hugo Marcelo</h3>
         </div>
         <p>Especialista em desenvolvimento físico e lúdico infantil. Aulas de futebol na segurança do seu condomínio em Belo Horizonte e região.</p>
         <div class="footer-cref">CREF: 047465-G/MG</div>
